@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour
 {
     
     private Rigidbody2D rb;
     private Vector2 movement;
 
-    public KeyCode moveUp = KeyCode.W;
-    public KeyCode moveDown = KeyCode.S;
+    public KeyCode moveUp = KeyCode.UpArrow;
+    public KeyCode moveDown = KeyCode.DownArrow;
     public float speed = 10.0f;
     public float boundY = 2.25f;
    
