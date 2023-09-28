@@ -5,23 +5,25 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
+    private bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        int rand = Random.Range(0, 2);
-
-        if (rand == 0) {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, 0f);
-        } else {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(8f, 0f);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Come back to add code here that will the ball gradually get faster over time
+        if (!isMoving && Input.anyKeyDown) {
+            int rand = Random.Range(0, 2);
+
+            if (rand == 0) {
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, 0f);
+            } else {
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(8f, 0f);
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D hit) {
