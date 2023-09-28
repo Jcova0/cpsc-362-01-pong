@@ -29,10 +29,10 @@ public class BallMovement : MonoBehaviour
         float dist2 = this.transform.position.y - GameObject.Find("Player2").transform.position.y;
 
         if (hit.gameObject.name == "Player") {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(8f, dist1 * 2f);
+            this.GetComponent<Rigidbody2D>().velocity += new Vector2(1f, dist1 * 2f);
         }
         if (hit.gameObject.name == "Player2") {
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, dist2 * 2f);
+            this.GetComponent<Rigidbody2D>().velocity += new Vector2(-1f, dist2 * 2f);
         }
     }
 
