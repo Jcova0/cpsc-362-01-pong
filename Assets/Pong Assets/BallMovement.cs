@@ -10,19 +10,20 @@ public class BallMovement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        int rand = Random.Range(0, 1);
         if (!isMoving && Input.anyKeyDown) {
-            int rand = Random.Range(0, 2);
-
             if (rand == 0) {
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, 0f);
             } else {
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(8f, 0f);
             }
+            isMoving = true;
         }
     }
 
@@ -46,6 +47,7 @@ public class BallMovement : MonoBehaviour
     void RestartGame()
     {
         ResetBall();
+        isMoving = false;
         Start();
     }
 }
