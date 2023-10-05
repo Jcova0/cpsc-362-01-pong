@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         Player1Pos = GameObject.FindGameObjectWithTag("Player1").transform.position;
         Player2Pos = GameObject.FindGameObjectWithTag("Player2").transform.position;
-      
+        
     }
     public static void Score(String goalID)
     {
