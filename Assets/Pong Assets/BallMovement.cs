@@ -17,7 +17,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         int rand = Random.Range(0, 1);
-        if (!isMoving && Input.GetKeyDown(KeyCode.Space)) {
+        if (!isMoving && Input.anyKeyDown) {
             if (rand == 0) {
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, 0f);
             } else {
