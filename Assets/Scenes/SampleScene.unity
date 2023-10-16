@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 2998113941868534390, guid: 7b834a59cae6c704cad5f441a16d1d91, type: 3}
-  spawnInterval: 1
+  spawnInterval: 5
 --- !u!1 &515861290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,11 +1281,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6950133494159671476, guid: 7b834a59cae6c704cad5f441a16d1d91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: -3.11
       objectReference: {fileID: 0}
     - target: {fileID: 6950133494159671476, guid: 7b834a59cae6c704cad5f441a16d1d91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6950133494159671476, guid: 7b834a59cae6c704cad5f441a16d1d91, type: 3}
       propertyPath: m_LocalPosition.z

@@ -13,19 +13,15 @@ public class WallSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Vector2 spawnPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
-            Instantiate(wallPrefab, spawnPos, Quaternion.identity);
-        }*/
+        
+        
         timeSinceLastSpawn += Time.deltaTime;
         if (timeSinceLastSpawn >= spawnInterval)
         {
             Vector2 spawnPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
             Instantiate(wallPrefab, spawnPos, Quaternion.identity);
             timeSinceLastSpawn = 0f;
-            spawnInterval *= 1.2f;
+            spawnInterval *= 0.9f;
         }
     }
 }
