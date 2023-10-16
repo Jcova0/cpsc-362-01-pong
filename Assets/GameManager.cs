@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static Vector2 Player2Pos;
     public GUISkin layout;
     GameObject _theBall;
+
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         Player1Pos = GameObject.FindGameObjectWithTag("Player1").transform.position;
         Player2Pos = GameObject.FindGameObjectWithTag("Player2").transform.position;
-        
+       
     }
     public static void Score(String goalID)
     {
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         if (PlayerScore1 == 3)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER ONE WINS");
+            _theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
         else if (PlayerScore2 == 3)
         {
