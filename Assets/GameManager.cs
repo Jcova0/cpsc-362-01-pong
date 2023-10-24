@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public static int PlayerScore2 = 0;
 
+    public WallSpawner wallSpawner;
     public static Vector2 Player1Pos;
     public static Vector2 Player2Pos;
     public GUISkin layout;
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
             Player1Pos = GameObject.FindGameObjectWithTag("Player1").transform.position = new Vector2(-7.5f, 0);
             Player2Pos = GameObject.FindGameObjectWithTag("Player2").transform.position = new Vector2(7.5f, 0);
             _theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
-            
+            wallSpawner.ResetGame();
         }
 
         if (PlayerScore1 == 3)

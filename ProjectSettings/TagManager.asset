@@ -7,6 +7,7 @@ TagManager:
   - Ball
   - Player1
   - Player2
+  - Breakable
   layers:
   - Default
   - TransparentFX

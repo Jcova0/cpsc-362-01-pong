@@ -11,8 +11,8 @@ public class WallSpawner : MonoBehaviour
     private float timeSinceLastSpawn = 0f;
     private bool _isGameOver = false;
     GameManager _gameManager;
-    public int gameManagerPlayerScore1;
-    public int gameManagerPlayerScore2;
+    private int gameManagerPlayerScore1;
+    private int gameManagerPlayerScore2;
         
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class WallSpawner : MonoBehaviour
         if (gameManagerPlayerScore1 == 3 || gameManagerPlayerScore2 == 3)
         {
             _isGameOver = true;
+            
         }
         // If the game is not over, spawn walls every spawnInterval seconds
         timeSinceLastSpawn += Time.deltaTime;
@@ -38,5 +39,12 @@ public class WallSpawner : MonoBehaviour
         
     }
 
-    
+    public void ResetGame()
+    {
+        // Reset the game by resetting the spawn interval and time since last spawn
+        spawnInterval = 5f;
+        timeSinceLastSpawn = 0f;
+        _isGameOver = false;
+        
+    }
 }
