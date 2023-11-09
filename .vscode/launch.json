@@ -2,6 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
+<<<<<<< HEAD
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
@@ -13,9 +14,15 @@
             "console": "externalTerminal"
         },
         {
+=======
+>>>>>>> d26ab5015b3e54a1ff7b4cf8b385d2853b9e027c
             "name": "Attach to Unity",
             "type": "vstuc",
             "request": "attach"
         }
+<<<<<<< HEAD
     ]
+=======
+     ]
+>>>>>>> d26ab5015b3e54a1ff7b4cf8b385d2853b9e027c
 }
