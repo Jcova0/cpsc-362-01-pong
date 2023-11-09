@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
 
     public static int PlayerScore2 = 0;
 
+    public static int score_multi = 1; 
+
     public WallSpawner wallSpawner;
+    public GameObject powerUp;
     public static Vector2 Player1Pos;
     public static Vector2 Player2Pos;
     public GUISkin layout;
@@ -32,15 +35,23 @@ public class GameManager : MonoBehaviour
         Player2Pos = GameObject.FindGameObjectWithTag("Player2").transform.position;
        
     }
+
+    public void apply_score_multi (int multi) {
+        Debug.Log("Multiplier applied.");
+        score_multi = multi; 
+    }
+
     public static void Score(String goalID)
     {
         if(goalID == "RightGoal")
         {
-            PlayerScore1++;
+            PlayerScore1 += score_multi;
+            score_multi = 1;
         }
         else
         {
-            PlayerScore2++;
+            PlayerScore2 += score_multi;
+            score_multi = 1;
         }
     }
 
