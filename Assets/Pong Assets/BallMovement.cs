@@ -6,9 +6,11 @@ public class BallMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     private bool isMoving = false;
+    public AudioSource hitSound;
     // Start is called before the first frame update
     void Start()
     {
+        hitSound = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
 
     }
@@ -28,6 +30,7 @@ public class BallMovement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D hit) {
+        hitSound.Play();
         float dist1 = this.transform.position.y - GameObject.Find("Player").transform.position.y;
         float dist2 = this.transform.position.y - GameObject.Find("Player2").transform.position.y;
 
