@@ -14,4 +14,9 @@ public class Menu : MonoBehaviour
      {
           SceneManager.LoadScene("LevelTwo");
      }
+
+     public void OnLevelThreeButton()
+     {
+          SceneManager.LoadScene("LevelThree");
+     }
 }

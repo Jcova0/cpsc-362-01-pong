@@ -7,6 +7,7 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D rb2d;
     private bool isMoving = false;
     public AudioSource hitSound;
+    public float hitSpeed = 3.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +36,10 @@ public class BallMovement : MonoBehaviour
         float dist2 = this.transform.position.y - GameObject.Find("Player2").transform.position.y;
 
         if (hit.gameObject.name == "Player") {
-            this.GetComponent<Rigidbody2D>().velocity += new Vector2(1f, dist1 * 2f);
+            this.GetComponent<Rigidbody2D>().velocity += new Vector2(hitSpeed, dist1 * 2f);
         }
         if (hit.gameObject.name == "Player2") {
-            this.GetComponent<Rigidbody2D>().velocity += new Vector2(-1f, dist2 * 2f);
+            this.GetComponent<Rigidbody2D>().velocity += new Vector2(-hitSpeed, dist2 * 2f);
         }
     }
 

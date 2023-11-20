@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public static int score_multi = 1; 
 
+    public int winScore = 3;
     public WallSpawner wallSpawner;
     public GameObject powerUp;
     public static Vector2 Player1Pos;
@@ -71,12 +72,12 @@ public class GameManager : MonoBehaviour
             wallSpawner.ResetGame();
         }
 
-        if (PlayerScore1 == 3)
+        if (PlayerScore1 == winScore)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER ONE WINS");
             _theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
-        else if (PlayerScore2 == 3)
+        else if (PlayerScore2 == winScore)
         {
             GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER TWO WINS");
             _theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
