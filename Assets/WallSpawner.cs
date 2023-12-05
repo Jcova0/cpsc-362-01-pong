@@ -8,14 +8,15 @@ using Random = UnityEngine.Random;
 public class WallSpawner : MonoBehaviour
 {
     public GameObject wallPrefab;
+    public GameObject ScoreBoosterPrefab;
     public float spawnInterval = 1f;
     private float timeSinceLastSpawn = 0f;
     private bool _isGameOver = false;
     GameManager _gameManager;
     private int gameManagerPlayerScore1;
     private int gameManagerPlayerScore2;
-    private bool correctMode;   
-
+    private bool correctMode;
+    
     // Update is called once per frame
     void Update()
     {
@@ -27,14 +28,15 @@ public class WallSpawner : MonoBehaviour
         if (scene.name == "LevelTwo")
         {
             correctMode = true;
-            print("LevelTwo");
         }
+        
         // If either player has 3 points, the game is over
         if (gameManagerPlayerScore1 == 3 || gameManagerPlayerScore2 == 3)
         {
             _isGameOver = true;
             
         }
+        
         // If the game is not over, spawn walls every spawnInterval seconds and the correct mode is selected.
         if (correctMode)
         {
@@ -44,11 +46,9 @@ public class WallSpawner : MonoBehaviour
                 Vector2 spawnPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
                 Instantiate(wallPrefab, spawnPos, Quaternion.identity);
                 timeSinceLastSpawn = 0f;
-                spawnInterval *= 0.95f;
+                spawnInterval *= 0.99f;
             }
         }
-        
-        
     }
 
     public void ResetGame()

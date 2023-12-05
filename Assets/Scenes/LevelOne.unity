@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 2998113941868534390, guid: 7b834a59cae6c704cad5f441a16d1d91, type: 3}
+  ScoreBoosterPrefab: {fileID: 0}
   spawnInterval: 1
 --- !u!1 &515861290
 GameObject:
@@ -373,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423ea36bc3f56e94e8ee675ea68fd07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winScore: 5
   wallSpawner: {fileID: 244842233}
   powerUp: {fileID: 0}
   layout: {fileID: 0}
@@ -1267,7 +1269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSound: {fileID: 2107785035}
-  hitSpeed: 2
+  hitSpeed: 1
 --- !u!82 &2107785035
 AudioSource:
   m_ObjectHideFlags: 0

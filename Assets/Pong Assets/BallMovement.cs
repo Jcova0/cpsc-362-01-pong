@@ -8,12 +8,13 @@ public class BallMovement : MonoBehaviour
     private bool isMoving = false;
     public AudioSource hitSound;
     public float hitSpeed = 3.0f;
+    public static string lastPlayerHit;
+    
     // Start is called before the first frame update
     void Start()
     {
         hitSound = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -37,10 +38,12 @@ public class BallMovement : MonoBehaviour
 
         if (hit.gameObject.name == "Player") {
             this.GetComponent<Rigidbody2D>().velocity += new Vector2(hitSpeed, dist1 * 2f);
+            
         }
         if (hit.gameObject.name == "Player2") {
             this.GetComponent<Rigidbody2D>().velocity += new Vector2(-hitSpeed, dist2 * 2f);
         }
+        lastPlayerHit = hit.gameObject.name;
     }
 
     void ResetBall()

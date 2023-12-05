@@ -6,13 +6,17 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
 {
     public int scoreMultiplier = 2;
     public float duration = 10.0f;
-
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Power-up collided with " + other.name);
-        if (other.CompareTag("Ball")) // || other.CompareTag("Player2"))
+        
+        if (other.CompareTag("Ball"))
         {
-            Debug.Log("if statement for player1 or player2");
             // Apply the score multiplier effect to the GameManager
             GameManager gameManager = FindObjectOfType<GameManager>();
             if (gameManager != null)
@@ -27,11 +31,15 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
             // Schedule a method to deactivate the effect after a duration
             Invoke("DeactivatePowerUp", duration);
         }
+        // Get lastPlayerHit from BallMovement.cs
+        string lastPlayerHit = BallMovement.lastPlayerHit;
+        Debug.Log(lastPlayerHit);
     }
 
     void DeactivatePowerUp()
     {
         // Deactivate the power-up for potential reuse
-        //gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
+    
 }
