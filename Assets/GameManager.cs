@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static Vector2 Player1Pos;
     public static Vector2 Player2Pos;
     public GUISkin layout;
+    public static bool isScoreMulti = false;
     GameObject _theBall;
     
     // Start is called before the first frame update
@@ -41,22 +42,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void apply_score_multi (int multi) {
-        Debug.Log("Multiplier applied.");
-        score_multi = multi; 
+    public void apply_score_multi (int multi, string whoHit) {
+        isScoreMulti = true;
+        score_multi = multi;
+        whoHit = BallMovement.lastPlayerHit;
     }
 
     public static void Score(String goalID)
     {
         if(goalID == "RightGoal")
         {
-            PlayerScore1 += score_multi;
-            score_multi = 1;
+            
+            if(isScoreMulti && BallMovement.lastPlayerHit == "Player"){
+                
+                PlayerScore1 += score_multi;
+                isScoreMulti = false;
+            }
+            else{
+                PlayerScore1 += 1;
+            }
         }
         else
         {
-            PlayerScore2 += score_multi;
-            score_multi = 1;
+            if(isScoreMulti && BallMovement.lastPlayerHit == "Player2"){
+                PlayerScore2 += score_multi;
+                isScoreMulti = false;
+            }
+            else{
+                PlayerScore2 += 1;
+            }
         }
     }
 
@@ -66,7 +80,7 @@ public class GameManager : MonoBehaviour
         GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + PlayerScore1);
         GUI.Label(new Rect(Screen.width / 2 + 150 + 12, 20, 100, 100), "" + PlayerScore2);
         
-        if(GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "Restart"))
+        if(GUI.Button(new Rect(Screen.width / 2 - 60, 35, 120, 53), "Restart") || Input.GetKeyDown(KeyCode.R))
         {
             PlayerScore1 = 0;
             PlayerScore2 = 0;

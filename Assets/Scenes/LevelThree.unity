@@ -1408,7 +1408,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSound: {fileID: 0}
   hitSpeed: 1
-  lastPlayerHit: 
 --- !u!82 &2107785035
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1519,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 2107785029}
     - target: {fileID: 2169367354316113509, guid: bfe374030d23689479081657b5d20834, type: 3}
       propertyPath: duration
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2890486294534171955, guid: bfe374030d23689479081657b5d20834, type: 3}
       propertyPath: m_LocalPosition.x

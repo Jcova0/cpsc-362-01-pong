@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScoreMultiplierPowerUp : MonoBehaviour
 {
     public int scoreMultiplier = 2;
     public float duration = 10.0f;
+    public float speed = 0.1f;
+    public float distance = 0.1f;
+
+    private Vector2 startPos;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Get the power up object
+        GameObject powerUp = GameObject.FindGameObjectWithTag("PowerUp");
+        // Get the start position of the power up    
+        startPos = transform.position;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -22,7 +30,7 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
             if (gameManager != null)
             {
                 Debug.Log("Power-up triggered!");
-                gameManager.apply_score_multi(scoreMultiplier);
+                gameManager.apply_score_multi(scoreMultiplier, BallMovement.lastPlayerHit);
             }
 
             // Deactivate the power-up
@@ -41,5 +49,12 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
         // Deactivate the power-up for potential reuse
         gameObject.SetActive(true);
     }
-    
+
+    void Update()
+    {
+        Vector2 pos = startPos; 
+        pos.x += Mathf.Sin(Time.time * speed) * distance;
+        transform.position = pos;
+        
+    }
 }

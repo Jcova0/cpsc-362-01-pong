@@ -20,11 +20,13 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int rand = Random.Range(0, 1);
-        if (!isMoving && Input.anyKeyDown) {
-            if (rand == 0) {
+        
+        if (!isMoving && Input.GetKeyDown(KeyCode.Space)) {
+            float rand = Random.Range(0, 4);
+            if (rand < 2) {
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(-8f, 0f);
-            } else {
+            } 
+            else {
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(8f, 0f);
             }
             isMoving = true;
@@ -38,16 +40,18 @@ public class BallMovement : MonoBehaviour
 
         if (hit.gameObject.name == "Player") {
             this.GetComponent<Rigidbody2D>().velocity += new Vector2(hitSpeed, dist1 * 2f);
-            
+            lastPlayerHit = "Player";    
         }
         if (hit.gameObject.name == "Player2") {
             this.GetComponent<Rigidbody2D>().velocity += new Vector2(-hitSpeed, dist2 * 2f);
+            lastPlayerHit = "Player2";
         }
-        lastPlayerHit = hit.gameObject.name;
+        
     }
 
     void ResetBall()
     {
+        float rand = Random.Range(0, 1);
         rb2d.velocity = Vector2.zero;
         transform.position = Vector2.zero;
     }
