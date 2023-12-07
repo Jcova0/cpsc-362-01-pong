@@ -31,6 +31,9 @@ public class BallMovement : MonoBehaviour
             }
             isMoving = true;
         }
+        if(rb2d.transform.position.x > 10 || rb2d.transform.position.x < -10) {
+            ResetBall();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D hit) {
@@ -51,7 +54,6 @@ public class BallMovement : MonoBehaviour
 
     void ResetBall()
     {
-        float rand = Random.Range(0, 1);
         rb2d.velocity = Vector2.zero;
         transform.position = Vector2.zero;
     }

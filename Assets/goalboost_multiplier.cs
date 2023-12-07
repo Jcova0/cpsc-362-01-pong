@@ -9,7 +9,7 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
     public float duration = 10.0f;
     public float speed = 0.1f;
     public float distance = 0.1f;
-
+    string lastPlayerHit = BallMovement.lastPlayerHit;
     private Vector2 startPos;
     
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
             if (gameManager != null)
             {
                 Debug.Log("Power-up triggered!");
-                gameManager.apply_score_multi(scoreMultiplier, BallMovement.lastPlayerHit);
+                gameManager.apply_score_multi(scoreMultiplier, lastPlayerHit);
             }
 
             // Deactivate the power-up
@@ -40,7 +40,7 @@ public class ScoreMultiplierPowerUp : MonoBehaviour
             Invoke("DeactivatePowerUp", duration);
         }
         // Get lastPlayerHit from BallMovement.cs
-        string lastPlayerHit = BallMovement.lastPlayerHit;
+        
         Debug.Log(lastPlayerHit);
     }
 

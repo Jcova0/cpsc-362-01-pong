@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -10,12 +11,15 @@ public class WallSpawner : MonoBehaviour
     public GameObject wallPrefab;
     public GameObject ScoreBoosterPrefab;
     public float spawnInterval = 1f;
+    public float maxCubes = 4f;
     private float timeSinceLastSpawn = 0f;
     private bool _isGameOver = false;
     GameManager _gameManager;
     private int gameManagerPlayerScore1;
     private int gameManagerPlayerScore2;
     private bool correctMode;
+
+    public static float currentCubes = 2.0f;
     
     // Update is called once per frame
     void Update()
@@ -34,19 +38,22 @@ public class WallSpawner : MonoBehaviour
         if (gameManagerPlayerScore1 == 3 || gameManagerPlayerScore2 == 3)
         {
             _isGameOver = true;
-            
         }
         
         // If the game is not over, spawn walls every spawnInterval seconds and the correct mode is selected.
         if (correctMode)
         {
-            timeSinceLastSpawn += Time.deltaTime;
-            if (timeSinceLastSpawn >= spawnInterval && _isGameOver == false)
+            if (currentCubes < maxCubes)
             {
-                Vector2 spawnPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
-                Instantiate(wallPrefab, spawnPos, Quaternion.identity);
-                timeSinceLastSpawn = 0f;
-                spawnInterval *= 0.99f;
+                timeSinceLastSpawn += Time.deltaTime;
+                if (timeSinceLastSpawn >= spawnInterval && _isGameOver == false)
+                {
+                    Vector2 spawnPos = new Vector2(Random.Range(-4f, 4f), Random.Range(-4f, 4f));
+                    Instantiate(wallPrefab, spawnPos, Quaternion.identity);
+                    timeSinceLastSpawn = 0f;
+                    spawnInterval *= 0.99f;
+                    currentCubes++;
+                }
             }
         }
     }
